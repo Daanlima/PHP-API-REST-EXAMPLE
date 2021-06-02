@@ -1,22 +1,22 @@
 <?php
 include '../../model/Usuario.php';
 
-class ConteudoControl{
+class UsuarioControl{
 	function insert($obj){
-		$conteudo = new Conteudo();
+		$usuario = new Usuario();
 		//echo $obj->titulo;
-		return $conteudo->insert($obj);
+		return $usuario->insert($obj);
 		header('Location:listar.php');
 	}
 
 	function update($obj,$id){
-		$conteudo = new Conteudo();
-		return $conteudo->update($obj,$id);
+		$usuario = new Usuario();
+		return $usuario->update($obj,$id);
 	}
 
 	function delete($obj,$id){
-		$conteudo = new Conteudo();
-		return $conteudo->delete($obj,$id);
+		$usuario = new Usuario();
+		return $usuario->delete($obj,$id);
 	}
 
 	function find($id = null){
@@ -24,8 +24,8 @@ class ConteudoControl{
 	}
 
 	function findAll(){
-		$conteudo = new Conteudo();
-		return $conteudo->findAll();
+		$usuario = new Usuario();
+		return $usuario->findAll();
 	}
 }
 

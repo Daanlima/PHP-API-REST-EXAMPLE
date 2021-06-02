@@ -1,6 +1,6 @@
 <?php
-include '../../control/CarroControl.php';
-$parceiro = new CarroControl();
+include '../../control/ParceiroControl.php';
+$parceiro = new ParceiroControl();
 
 header('Content-Type: application/json');
 

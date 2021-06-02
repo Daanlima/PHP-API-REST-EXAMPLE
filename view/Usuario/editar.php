@@ -9,8 +9,8 @@ $id = $obj->id;
 
 
 if(!empty($data)){	
- $conteudoControl = new ConteudoControl();
- $conteudoControl->update($obj , $id);
+ $usuario = new UsuarioControl();
+ $usuario->update($obj , $id);
  header('Location:listar.php');
 }
 

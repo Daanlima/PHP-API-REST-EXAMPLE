@@ -1,7 +1,7 @@
 <?php
 include '../../conexao/Conexao.php';
 
-class Conteudo extends Conexao{
+class Carro extends Conexao{
 	private $PlacaCarro;
     private $MarcaCarro;
     private $ModeloCarro;

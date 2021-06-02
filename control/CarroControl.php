@@ -1,22 +1,22 @@
 <?php
 include '../../model/Carro.php';
 
-class ConteudoControl{
+class CarroControl{
 	function insert($obj){
-		$conteudo = new Conteudo();
+		$carro = new Carro();
 		//echo $obj->titulo;
-		return $conteudo->insert($obj);
+		return $carro->insert($obj);
 		header('Location:listar.php');
 	}
 
 	function update($obj,$id){
-		$conteudo = new Conteudo();
-		return $conteudo->update($obj,$id);
+		$carro = new Carro();
+		return $carro->update($obj,$id);
 	}
 
 	function delete($obj,$id){
-		$conteudo = new Conteudo();
-		return $conteudo->delete($obj,$id);
+		$carro = new Carro();
+		return $carro->delete($obj,$id);
 	}
 
 	function find($id = null){
@@ -24,8 +24,8 @@ class ConteudoControl{
 	}
 
 	function findAll(){
-		$conteudo = new Conteudo();
-		return $conteudo->findAll();
+		$carro = new Carro();
+		return $carro->findAll();
 	}
 }
 

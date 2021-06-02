@@ -1,10 +1,10 @@
 <?php
 include '../../control/UsuarioControl.php';
-$conteudoControl = new ConteudoControl();
+$usuario = new UsuarioControl();
 
 header('Content-Type: application/json');
 
-foreach($conteudoControl->findAll() as $valor){
+foreach($usuario->findAll() as $valor){
 	echo json_encode($valor);
 }
 

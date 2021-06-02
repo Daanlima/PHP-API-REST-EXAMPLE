@@ -1,22 +1,17 @@
 <?php
 include '../../conexao/Conexao.php';
 
-class Usuario extends Conexao{
+class Parceiro extends Conexao{
 	private $nome;
-    private $email;
-    private $xp;
+    private $cnpj;
     private $cep;
 
     function getNome() {
         return $this->nome;
     }
 
-    function getEmail() {
-        return $this->email;
-    }
-
-    function getXP() {
-        return $this->xp;
+    function getCNPJ() {
+        return $this->cnpj;
     }
 
     function getCEP() {
@@ -27,12 +22,8 @@ class Usuario extends Conexao{
         $this->nome = $nome;
     }
 
-    function setEmail($email) {
-        $this->email = $email;
-    }
-
-    function setXP($xp) {
-        $this->xp = $xp;
+    function setCNPJ($cnpj) {
+        $this->cnpj = $cnpj;
     }
 
     function setCEP($cep) {
@@ -40,29 +31,27 @@ class Usuario extends Conexao{
     }
 
     public function insert($obj){
-    	$sql = "INSERT INTO usuario(nome,email,xp,cep) VALUES (:nome,:email,:xp,:cep)";
+    	$sql = "INSERT INTO parceiro(nome,cnpj,cep) VALUES (:nome,:cnpj,:cep)";
     	$consulta = Conexao::prepare($sql);
         $consulta->bindValue('nome',  $obj->nome);
-        $consulta->bindValue('email', $obj->email);
-        $consulta->bindValue('xp' , $obj->xp);
+        $consulta->bindValue('cnpj' , $obj->cnpj);
         $consulta->bindValue('cep' , $obj->cep);
     	return $consulta->execute();
 
 	}
 
 	public function update($obj,$id = null){
-		$sql = "UPDATE usuario SET nome = :nome, email = :email,xp = :xp, cep = :cep WHERE id = :id ";
+		$sql = "UPDATE parceiro SET nome = :nome,cnpj = :cnpj, cep = :cep WHERE id = :id ";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('nome', $obj->nome);
-		$consulta->bindValue('email', $obj->email);
-		$consulta->bindValue('xp' , $obj->xp);
+		$consulta->bindValue('cnpj' , $obj->cnpj);
 		$consulta->bindValue('cep', $obj->cep);
 		$consulta->bindValue('id', $id);
 		return $consulta->execute();
 	}
 
 	public function delete($obj,$id = null){
-		$sql =  "DELETE FROM usuario WHERE id = :id";
+		$sql =  "DELETE FROM parceiro WHERE id = :id";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);
 		$consulta->execute();
@@ -73,7 +62,7 @@ class Usuario extends Conexao{
 	}
 
 	public function findAll(){
-		$sql = "SELECT * FROM usuario";
+		$sql = "SELECT * FROM parceiro";
 		$consulta = Conexao::prepare($sql);
 		$consulta->execute();
 		return $consulta->fetchAll();

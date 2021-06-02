@@ -1,5 +1,5 @@
 <?php
-include '../../control/CarroControl.php';
+include '../../control/ParceiroControl.php';
  
 $data = file_get_contents('php://input');
 $obj =  json_decode($data);
@@ -8,7 +8,7 @@ $obj =  json_decode($data);
 
 
 if(!empty($data)){	
- $parceiro = new CarroControl();
+ $parceiro = new ParceiroControl();
  $parceiro->insert($obj);
  header('Location:listar.php');
 }

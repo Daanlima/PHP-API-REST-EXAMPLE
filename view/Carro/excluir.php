@@ -9,8 +9,8 @@ $id = $obj->id;
 
 
 if(!empty($data)){	
- $conteudoControl = new ConteudoControl();
- $conteudoControl->delete($obj,$id);
+ $parceiro = new CarroControl();
+ $parceiro->delete($obj,$id);
  header('Location:listar.php');
 }
 
