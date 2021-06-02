@@ -2,56 +2,56 @@
 include '../../conexao/Conexao.php';
 
 class Servico extends Conexao{
-	private $nome;
-    private $cnpj;
-    private $cep;
+	private $NomeServico;
+    private $Valor;
+    private $parceiro_id ;
 
-    function getNome() {
-        return $this->nome;
+    function getNomeServico() {
+        return $this->NomeServico;
     }
 
-    function getCNPJ() {
-        return $this->cnpj;
+    function getValor() {
+        return $this->Valor;
     }
 
-    function getCEP() {
-        return $this->cep;
+    function getParceiro_id() {
+        return $this->parceiro_id;
     }
 
-    function setNome($nome) {
-        $this->nome = $nome;
+    function setNomeServico($NomeServico) {
+        $this->NomeServico = $NomeServico;
     }
 
-    function setCNPJ($cnpj) {
-        $this->cnpj = $cnpj;
+    function setValor($setValor) {
+        $this->setValor = $setValor;
     }
 
-    function setCEP($cep) {
-        $this->cep = $cep;
+    function setParceiro_id($parceiro_id) {
+        $this->cep = $parceiro_id;
     }
 
     public function insert($obj){
-    	$sql = "INSERT INTO parceiro(nome,cnpj,cep) VALUES (:nome,:cnpj,:cep)";
+    	$sql = "INSERT INTO servicoparceiro(NomeServico,Valor,parceiro_id) VALUES (:NomeServico,:Valor,:parceiro_id)";
     	$consulta = Conexao::prepare($sql);
-        $consulta->bindValue('nome',  $obj->nome);
-        $consulta->bindValue('cnpj' , $obj->cnpj);
-        $consulta->bindValue('cep' , $obj->cep);
+        $consulta->bindValue('NomeServico',  $obj->NomeServico);
+        $consulta->bindValue('Valor' , $obj->Valor);
+        $consulta->bindValue('parceiro_id' , $obj->parceiro_id);
     	return $consulta->execute();
 
 	}
 
 	public function update($obj,$id = null){
-		$sql = "UPDATE parceiro SET nome = :nome,cnpj = :cnpj, cep = :cep WHERE id = :id ";
+		$sql = "UPDATE servicoparceiro SET NomeServico = :NomeServico,Valor = :Valor, parceiro_id = :parceiro_id WHERE id = :id ";
 		$consulta = Conexao::prepare($sql);
-		$consulta->bindValue('nome', $obj->nome);
-		$consulta->bindValue('cnpj' , $obj->cnpj);
-		$consulta->bindValue('cep', $obj->cep);
+		$consulta->bindValue('NomeServico', $obj->NomeServico);
+		$consulta->bindValue('Valor' , $obj->Valor);
+		$consulta->bindValue('parceiro_id', $obj->parceiro_id);
 		$consulta->bindValue('id', $id);
 		return $consulta->execute();
 	}
 
 	public function delete($obj,$id = null){
-		$sql =  "DELETE FROM parceiro WHERE id = :id";
+		$sql =  "DELETE FROM servicoparceiro WHERE id = :id";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);
 		$consulta->execute();
@@ -62,7 +62,7 @@ class Servico extends Conexao{
 	}
 
 	public function findAll(){
-		$sql = "SELECT * FROM parceiro";
+		$sql = "SELECT * FROM servicoparceiro";
 		$consulta = Conexao::prepare($sql);
 		$consulta->execute();
 		return $consulta->fetchAll();
