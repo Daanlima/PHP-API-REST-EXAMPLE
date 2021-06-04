@@ -1,6 +1,5 @@
 <?php
 include '../../control/UsuarioControl.php';
-$usuario = new UsuarioControl();
 
 header('Content-Type: application/json');
 
@@ -9,11 +8,10 @@ $obj =  json_decode($data);
 
 $id = $obj->id;
 
-var_dump($id);
-var_dump($obj);
+if(!empty($data)){	
+	$usuario = new UsuarioControl();
+	$usuario->find($obj,$id);
 
-foreach($usuario->find($obj,$id) as $valor){
-	echo json_encode($valor);
 }
 
 /*
