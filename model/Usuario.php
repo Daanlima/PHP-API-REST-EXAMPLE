@@ -73,7 +73,7 @@ class Usuario extends Conexao{
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);
 		$consulta->execute();
-		return $consulta->fetch_assoc();
+		return $consulta->fetchAll();
 	}
 
 	public function findAll(){
@@ -85,7 +85,7 @@ class Usuario extends Conexao{
 		$consulta->execute();
 		//return $consulta->fetchAll();
 
-        while ($record = $consulta->fetch_object()) {
+        while ($record = $consulta->fetchAll()) {
             array_push($arraylist, $record);
         }
         return $arraylist;
