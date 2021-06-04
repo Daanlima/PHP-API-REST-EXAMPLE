@@ -9,6 +9,9 @@ $obj =  json_decode($data);
 
 $id = $obj->id;
 
+var_dump($id);
+var_dump($obj);
+
 foreach($usuario->find($obj,$id) as $valor){
 	echo json_encode($valor);
 }
