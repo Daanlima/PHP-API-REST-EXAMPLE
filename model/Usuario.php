@@ -77,7 +77,7 @@ class Usuario extends Conexao{
 	}
 
 	public function findAll(){
-		$sql = "SELECT * FROM usuario WHERE id = 1";
+		$sql = "SELECT * FROM usuario";
 		$consulta = Conexao::prepare($sql);
 		$consulta->execute();
 		return $consulta->fetchAll();
