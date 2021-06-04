@@ -1,22 +1,12 @@
 <?php
 include '../../control/UsuarioControl.php';
+$usuario = new UsuarioControl();
 
 header('Content-Type: application/json');
 
-$data = file_get_contents('php://input');
-$obj =  json_decode($data);
 
-$id = $obj->id;
-
-if(!empty($data)){	
-	$usuario = new UsuarioControl();
-	$usuario->find($obj,$id);
-
+if(!empty($id)){	
+	$search = $usuario->find($id);
+	echo json_encode($search);
 }
-
-/*
-$search = $usuario->find($id);
-echo json_encode($search);
-*/
-
 ?>
