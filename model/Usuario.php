@@ -77,10 +77,19 @@ class Usuario extends Conexao{
 	}
 
 	public function findAll(){
+
+        $arraylist = [];
+
 		$sql = "SELECT * FROM usuario";
 		$consulta = Conexao::prepare($sql);
 		$consulta->execute();
-		return $consulta->fetchAll();
+		//return $consulta->fetchAll();
+
+        while ($record = $consulta->fetch_object()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
+
 	}
 
 }
