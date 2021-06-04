@@ -9,7 +9,7 @@ $obj =  json_decode($data);
 
 $id = $obj->id;
 
-foreach($usuario->find($id) as $valor){
+foreach($usuario->find($obj,$id) as $valor){
 	echo json_encode($valor);
 }
 

@@ -4,7 +4,6 @@ include '../../model/Usuario.php';
 class UsuarioControl{
 	function insert($obj){
 		$usuario = new Usuario();
-		//echo $obj->titulo;
 		return $usuario->insert($obj);
 		header('Location:listar.php');
 	}
@@ -19,9 +18,9 @@ class UsuarioControl{
 		return $usuario->delete($obj,$id);
 	}
 
-	function find($id){
+	function find($obj,$id){
 		$usuario = new Usuario();
-		return $usuario->find($id);
+		return $usuario->find($obj,$id);
 	}
 
 	function findAll(){

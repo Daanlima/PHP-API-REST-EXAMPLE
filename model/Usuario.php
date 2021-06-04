@@ -68,7 +68,7 @@ class Usuario extends Conexao{
 		$consulta->execute();
 	}
 
-	public function find($id = null){
+	public function find($obj,$id = null){
         $arraylist = [];
 		$sql = "SELECT * FROM usuario WHERE id = $id";
 		$consulta = Conexao::prepare($sql);
