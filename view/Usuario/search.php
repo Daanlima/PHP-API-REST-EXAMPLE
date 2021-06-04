@@ -4,6 +4,11 @@ $usuario = new UsuarioControl();
 
 header('Content-Type: application/json');
 
+$data = file_get_contents('php://input');
+$obj =  json_decode($data);
+
+$id = $obj->id;
+
 foreach($usuario->find($id) as $valor){
 	echo json_encode($valor);
 }
