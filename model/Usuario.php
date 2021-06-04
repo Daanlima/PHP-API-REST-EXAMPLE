@@ -69,11 +69,18 @@ class Usuario extends Conexao{
 	}
 
 	public function find($id = null){
-        $sql = "SELECT * FROM usuario WHERE id = :id";
+        $arraylist = [];
+
+		$sql = "SELECT * FROM usuario WHERE id= :id";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);
 		$consulta->execute();
-		return $consulta->fetch_assoc();
+		//return $consulta->fetchAll();
+
+        while ($record = $consulta->fetchAll()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
 	}
 
 	public function findAll(){
