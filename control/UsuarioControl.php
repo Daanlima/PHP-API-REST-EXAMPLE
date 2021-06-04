@@ -19,8 +19,9 @@ class UsuarioControl{
 		return $usuario->delete($obj,$id);
 	}
 
-	function find($id = null){
-
+	function find($id){
+		$usuario = new Usuario();
+		return $usuario->find($id);
 	}
 
 	function findAll(){
