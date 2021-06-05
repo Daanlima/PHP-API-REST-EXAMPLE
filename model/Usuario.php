@@ -39,6 +39,13 @@ class Usuario extends Conexao{
         $this->cep = $cep;
     }
 
+    function setAll($nome, $email, $xp, $cep) {
+        $this->setNome($nome);
+        $this->setEmail($email);
+        $this->setXP($xp);
+        $this->setCEP($cep);
+    }
+
     public function insert($obj){
     	$sql = "INSERT INTO usuario(nome,email,xp,cep) VALUES (:nome,:email,:xp,:cep)";
     	$consulta = Conexao::prepare($sql);
