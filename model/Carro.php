@@ -81,7 +81,7 @@ class Carro extends Conexao{
 	}
 
 	public function update($obj,$id = null){
-		$sql = "UPDATE carro SET placaCarro = :PlacaCarro, marcacarro = :MarcaCarro, modelocarro = :ModeloCarro, anocarro = :AnoCarro, quilometragem = :Quilometragem, usuario_id = :usuario_id WHERE idCarro = :id ";
+		$sql = "UPDATE carro SET placacarro = :PlacaCarro, marcacarro = :MarcaCarro, modelocarro = :ModeloCarro, anocarro = :AnoCarro, quilometragem = :Quilometragem, usuario_id = :usuario_id WHERE idcarro = :id ";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('PlacaCarro', $obj->PlacaCarro);
 		$consulta->bindValue('MarcaCarro', $obj->MarcaCarro);
