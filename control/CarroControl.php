@@ -4,7 +4,6 @@ include '../../model/Carro.php';
 class CarroControl{
 	function insert($obj){
 		$carro = new Carro();
-		//echo $obj->titulo;
 		return $carro->insert($obj);
 		header('Location:listar.php');
 	}

@@ -38,6 +38,10 @@ class Carro extends Conexao{
         $this->PlacaCarro = $PlacaCarro;
     }
 
+    function setMarcaCarro($MarcaCarro) {
+        $this->MarcaCarro = $MarcaCarro;
+    }
+
     function setModeloCarro($ModeloCarro) {
         $this->ModeloCarro = $ModeloCarro;
     }
@@ -54,8 +58,9 @@ class Carro extends Conexao{
         $this->usuario_id = $usuario_id;
     }
 
-    function setAll($PlacaCarro, $ModeloCarro, $AnoCarro, $Quilometragem, $usuario_id) {
+    function setAll($PlacaCarro, $MarcaCarro, $ModeloCarro, $AnoCarro, $Quilometragem, $usuario_id) {
         $this->setPlacaCarro($PlacaCarro);
+        $this->setMarcaCarro($MarcaCarro);
         $this->setModeloCarro($ModeloCarro);
         $this->setAnoCarro($AnoCarro);
         $this->setQuilometragem($Quilometragem);
@@ -63,7 +68,7 @@ class Carro extends Conexao{
     }
 
     public function insert($obj){
-    	$sql = "INSERT INTO carro(placacarro,marcacarro,modelocarro,anocarro,quilometragem,usuario_id ) VALUES (:PlacaCarro,:MarcaCarro,:ModeloCarro,:AnoCarro,:Quilometragem, :usuario_id)";
+    	$sql = "INSERT INTO carro(placacarro,marcacarro,modelocarro,anocarro,quilometragem,usuario_id) VALUES (:PlacaCarro,:MarcaCarro,:ModeloCarro,:AnoCarro,:Quilometragem, :usuario_id)";
     	$consulta = Conexao::prepare($sql);
         $consulta->bindValue('PlacaCarro',  $obj->PlacaCarro);
         $consulta->bindValue('MarcaCarro', $obj->MarcaCarro);
