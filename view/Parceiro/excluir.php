@@ -1,17 +1,22 @@
 <?php
 include '../../control/ParceiroControl.php';
  
-$data = file_get_contents('php://input');
-$obj =  json_decode($data);
-//echo $obj->titulo;
+//$data = file_get_contents('php://input');
+//$obj =  json_decode($data);
 
-$id = $obj->id;
+//$id = $obj->id;
 
+if(!empty($_REQUEST['idparceiro'])){
 
-if(!empty($data)){	
- $parceiro = new ParceiroControl();
- $parceiro->delete($obj,$id);
- header('Location:listar.php');
+	$id = $_REQUEST['idparceiro'];
+
+    if(!empty($id)){	
+
+    $parceiro = new ParceiroControl();
+    $parceiro->delete($id);
+    header('Location:listar.php');
+
+    }
 }
 
 

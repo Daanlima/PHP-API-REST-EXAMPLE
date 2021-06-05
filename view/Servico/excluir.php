@@ -1,17 +1,22 @@
 <?php
 include '../../control/ServicoControl.php';
  
-$data = file_get_contents('php://input');
-$obj =  json_decode($data);
-//echo $obj->titulo;
+//$data = file_get_contents('php://input');
+//$obj =  json_decode($data);
 
-$id = $obj->id;
+//$id = $obj->id;
 
+if(!empty($_REQUEST['idservico'])){
 
-if(!empty($data)){	
- $servico = new ServicoControl();
- $servico->delete($obj,$id);
- header('Location:listar.php');
+	$id = $_REQUEST['idservico'];
+
+    if(!empty($id)){	
+
+    $servico = new ServicoControl();
+    $servico->delete($id);
+    header('Location:listar.php');
+
+    }
 }
 
 

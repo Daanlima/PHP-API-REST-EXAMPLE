@@ -38,7 +38,7 @@ class Servico extends Conexao{
     }
 
     public function insert($obj){
-    	$sql = "INSERT INTO servicoparceiro(NomeServico,Valor,parceiro_id) VALUES (:NomeServico,:Valor,:parceiro_id)";
+    	$sql = "INSERT INTO servicoparceiro(nomeservico,valor,parceiro_id) VALUES (:NomeServico,:Valor,:parceiro_id)";
     	$consulta = Conexao::prepare($sql);
         $consulta->bindValue('NomeServico',  $obj->NomeServico);
         $consulta->bindValue('Valor' , $obj->Valor);
@@ -48,7 +48,7 @@ class Servico extends Conexao{
 	}
 
 	public function update($obj,$id = null){
-		$sql = "UPDATE servicoparceiro SET NomeServico = :NomeServico,Valor = :Valor, parceiro_id = :parceiro_id WHERE id = :id ";
+		$sql = "UPDATE servicoparceiro SET nomeservico = :NomeServico,valor = :Valor, parceiro_id = :parceiro_id WHERE idservico = :id ";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('NomeServico', $obj->NomeServico);
 		$consulta->bindValue('Valor' , $obj->Valor);

@@ -1,15 +1,15 @@
 <?php
-include '../../control/UsuarioControl.php';
-$usuario = new UsuarioControl();
+include '../../control/ParceiroControl.php';
+$parceiro = new ParceiroControl();
 
-if(!empty($_REQUEST['id'])){
+if(!empty($_REQUEST['idparceiro'])){
 
-	$id = $_REQUEST['id'];
+	$id = $_REQUEST['idparceiro'];
 
 	header('Content-Type: application/json');
 
 	if(!empty($id)){	
-		$search = $usuario->find($id);
+		$search = $parceiro->find($id);
 		echo json_encode($search);
 	}
 
