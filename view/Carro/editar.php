@@ -9,7 +9,7 @@ include '../../control/CarroControl.php';
 
 if(!empty($_REQUEST['idcarro']) && !empty($_REQUEST['placacarro']) && !empty($_REQUEST['marcacarro']) && !empty($_REQUEST['modelocarro']) && !empty($_REQUEST['anocarro']) && !empty($_REQUEST['quilometragem']) && !empty($_REQUEST['usuario_id'])){
 
-    $idcarro = $_REQUEST['idcarro'];
+    $id = $_REQUEST['idcarro'];
     $placacarro = $_REQUEST['placacarro'];
     $marcacarro = $_REQUEST['marcacarro'];
     $modelocarro = $_REQUEST['modelocarro'];
@@ -20,7 +20,7 @@ if(!empty($_REQUEST['idcarro']) && !empty($_REQUEST['placacarro']) && !empty($_R
     $obj = new Carro();
     $obj->setAll($placacarro, $marcacarro, $modelocarro, $anocarro, $quilometragem, $usuario_id);
 
-    $obj = $obj->update($obj, $idcarro);
+    $obj = $obj->update($obj, $id);
 
     header('Location:listar.php');
 
