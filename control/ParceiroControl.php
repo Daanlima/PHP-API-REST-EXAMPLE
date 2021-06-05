@@ -14,13 +14,14 @@ class ParceiroControl{
 		return $parceiro->update($obj,$id);
 	}
 
-	function delete($obj,$id){
+	function delete($id){
 		$parceiro = new Parceiro();
-		return $parceiro->delete($obj,$id);
+		return $parceiro->delete($id);
 	}
 
-	function find($id = null){
-
+	function find($id){
+		$parceiro = new Parceiro();
+		return $parceiro->find($id);
 	}
 
 	function findAll(){

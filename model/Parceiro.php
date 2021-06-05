@@ -2,6 +2,7 @@
 include '../../conexao/Conexao.php';
 
 class Parceiro extends Conexao{
+	private $idarceiro;
 	private $nome;
     private $cnpj;
     private $cep;
@@ -30,6 +31,13 @@ class Parceiro extends Conexao{
         $this->cep = $cep;
     }
 
+	function setAll($nome, $cnpj, $cep) {
+        $this->getNome($nome);
+        $this->getCNPJ($cnpj);
+        $this->setCEP($cep);
+    }
+
+
     public function insert($obj){
     	$sql = "INSERT INTO parceiro(nome,cnpj,cep) VALUES (:nome,:cnpj,:cep)";
     	$consulta = Conexao::prepare($sql);
@@ -50,22 +58,40 @@ class Parceiro extends Conexao{
 		return $consulta->execute();
 	}
 
-	public function delete($obj,$id = null){
-		$sql =  "DELETE FROM parceiro WHERE id = :id";
+	public function delete($id = null){
+		$sql =  "DELETE FROM parceiro WHERE idparceiro = :id";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);
 		$consulta->execute();
 	}
 
 	public function find($id = null){
+		$arraylist = [];
+		$sql = "SELECT * FROM parceiro WHERE idparceiro = :id";
+		$consulta = Conexao::prepare($sql);
+		$consulta->bindValue('id',$id);
+		$consulta->execute();
+		//return $consulta->fetchAll();
 
+        while ($record = $consulta->fetchAll()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
 	}
 
 	public function findAll(){
+		$arraylist = [];
+
 		$sql = "SELECT * FROM parceiro";
 		$consulta = Conexao::prepare($sql);
 		$consulta->execute();
-		return $consulta->fetchAll();
+		//return $consulta->fetchAll();
+
+        while ($record = $consulta->fetchAll()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
+
 	}
 
 }

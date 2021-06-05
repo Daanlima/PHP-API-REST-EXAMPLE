@@ -23,7 +23,6 @@ if(!empty($_REQUEST['id']) && !empty($_REQUEST['nome']) && !empty($_REQUEST['ema
 
 }
 
-echo "erro, algo vazio"
 
 
 /*if(!empty($data)){	

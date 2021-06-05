@@ -1,18 +1,26 @@
 <?php
 include '../../control/CarroControl.php';
  
-$data = file_get_contents('php://input');
-$obj =  json_decode($data);
+//$data = file_get_contents('php://input');
+//$obj =  json_decode($data);
 //echo $obj->titulo;
 
-$id = $obj->id;
 
+//$id = $obj->id;
 
-if(!empty($data)){	
- $parceiro = new CarroControl();
- $parceiro->delete($obj,$id);
- header('Location:listar.php');
+if(!empty($_REQUEST['idcarro'])){
+
+	$id = $_REQUEST['idcarro'];
+
+    if(!empty($id)){	
+
+    $usuario = new CarroControl();
+    $usuario->delete($id);
+    header('Location:listar.php');
+
+    }
 }
+
 
 
 

@@ -14,13 +14,14 @@ class CarroControl{
 		return $carro->update($obj,$id);
 	}
 
-	function delete($obj,$id){
+	function delete($id){
 		$carro = new Carro();
-		return $carro->delete($obj,$id);
+		return $carro->delete($id);
 	}
 
-	function find($id = null){
-
+	function find($id){
+		$carro = new Carro();
+		return $carro->find($id);
 	}
 
 	function findAll(){

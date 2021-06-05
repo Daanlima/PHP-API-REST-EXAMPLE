@@ -14,13 +14,14 @@ class ServicoControl{
 		return $servico->update($obj,$id);
 	}
 
-	function delete($obj,$id){
+	function delete($id){
 		$servico = new Servico();
-		return $servico->delete($obj,$id);
+		return $servico->delete($id);
 	}
 
 	function find($id = null){
-
+		$servico = new Servico();
+		return $servico->find($id);
 	}
 
 	function findAll(){

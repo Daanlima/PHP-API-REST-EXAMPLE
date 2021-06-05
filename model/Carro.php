@@ -2,6 +2,7 @@
 include '../../conexao/Conexao.php';
 
 class Carro extends Conexao{
+	private $idCarro;
 	private $PlacaCarro;
     private $MarcaCarro;
     private $ModeloCarro;
@@ -53,8 +54,16 @@ class Carro extends Conexao{
         $this->usuario_id = $usuario_id;
     }
 
+    function setAll($PlacaCarro, $ModeloCarro, $AnoCarro, $Quilometragem, $usuario_id) {
+        $this->setPlacaCarro($PlacaCarro);
+        $this->setModeloCarro($ModeloCarro);
+        $this->setAnoCarro($AnoCarro);
+        $this->setQuilometragem($Quilometragem);
+        $this->setUsuario_id($usuario_id);
+    }
+
     public function insert($obj){
-    	$sql = "INSERT INTO carro(PlacaCarro,MarcaCarro,ModeloCarro,AnoCarro,Quilometragem,usuario_id ) VALUES (:PlacaCarro,:MarcaCarro,:ModeloCarro,:AnoCarro,:Quilometragem, :usuario_id)";
+    	$sql = "INSERT INTO carro(placacarro,marcacarro,modelocarro,anocarro,quilometragem,usuario_id ) VALUES (:PlacaCarro,:MarcaCarro,:ModeloCarro,:AnoCarro,:Quilometragem, :usuario_id)";
     	$consulta = Conexao::prepare($sql);
         $consulta->bindValue('PlacaCarro',  $obj->PlacaCarro);
         $consulta->bindValue('MarcaCarro', $obj->MarcaCarro);
@@ -67,7 +76,7 @@ class Carro extends Conexao{
 	}
 
 	public function update($obj,$id = null){
-		$sql = "UPDATE carro SET PlacaCarro = :PlacaCarro, MarcaCarro = :MarcaCarro, ModeloCarro = :ModeloCarro, AnoCarro = :AnoCarro, Quilometragem = :Quilometragem, usuario_id = :usuario_id WHERE idCarro = :id ";
+		$sql = "UPDATE carro SET placaCarro = :PlacaCarro, marcacarro = :MarcaCarro, modelocarro = :ModeloCarro, anocarro = :AnoCarro, quilometragem = :Quilometragem, usuario_id = :usuario_id WHERE idCarro = :id ";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('PlacaCarro', $obj->PlacaCarro);
 		$consulta->bindValue('MarcaCarro', $obj->MarcaCarro);
@@ -79,22 +88,39 @@ class Carro extends Conexao{
 		return $consulta->execute();
 	}
 
-	public function delete($obj,$id = null){
-		$sql =  "DELETE FROM carro WHERE id = :id";
+	public function delete($id = null){
+		$sql =  "DELETE FROM carro WHERE idcarro = :id";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);
 		$consulta->execute();
 	}
 
 	public function find($id = null){
+        $arraylist = [];
+		$sql = "SELECT * FROM carro WHERE idcarro = :id";
+		$consulta = Conexao::prepare($sql);
+		$consulta->bindValue('id',$id);
+		$consulta->execute();
+		//return $consulta->fetchAll();
 
+        while ($record = $consulta->fetchAll()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
 	}
 
 	public function findAll(){
+		$arraylist = [];
+
 		$sql = "SELECT * FROM carro";
 		$consulta = Conexao::prepare($sql);
 		$consulta->execute();
-		return $consulta->fetchAll();
+		//return $consulta->fetchAll();
+
+        while ($record = $consulta->fetchAll()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
 	}
 
 }
