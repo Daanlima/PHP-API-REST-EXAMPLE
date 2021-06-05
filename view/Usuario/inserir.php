@@ -6,7 +6,7 @@ include '../../control/UsuarioControl.php';
 
     
 
-    if(!empty($_REQUEST['nome']) && !empty($_REQUEST['email']) && !empty($_REQUEST['xp']) && !empty($_REQUEST['cep'])){
+if(!empty($_REQUEST['nome']) && !empty($_REQUEST['email']) && !empty($_REQUEST['xp']) && !empty($_REQUEST['cep'])){
 
         $nome = $_REQUEST['nome'];
         $email = $_REQUEST['email'];
@@ -23,13 +23,11 @@ include '../../control/UsuarioControl.php';
 }
 
 
-
-
-if(!empty($data)){	
+/*if(!empty($data)){	
  $usuario = new UsuarioControl();
  $usuario->insert($obj);
  header('Location:listar.php');
-}
+}*/
 
 
 

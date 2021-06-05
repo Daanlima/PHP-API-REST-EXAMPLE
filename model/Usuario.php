@@ -2,6 +2,7 @@
 include '../../conexao/Conexao.php';
 
 class Usuario extends Conexao{
+	private $id;
 	private $nome;
     private $email;
     private $xp;
