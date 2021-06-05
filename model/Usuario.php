@@ -61,7 +61,7 @@ class Usuario extends Conexao{
 		return $consulta->execute();
 	}
 
-	public function delete($obj,$id = null){
+	public function delete($id = null){
 		$sql =  "DELETE FROM usuario WHERE id = :id";
 		$consulta = Conexao::prepare($sql);
 		$consulta->bindValue('id',$id);

@@ -1,18 +1,22 @@
 <?php
 include '../../control/UsuarioControl.php';
  
-$data = file_get_contents('php://input');
-$obj =  json_decode($data);
+//$data = file_get_contents('php://input');
+//$obj =  json_decode($data);
 
 $id = $obj->id;
 
+if(!empty($_REQUEST['id'])){
 
-if(!empty($data)){	
+	$id = $_REQUEST['id'];
 
- $usuario = new UsuarioControl();
- $usuario->delete($obj,$id);
- header('Location:listar.php');
- 
+    if(!empty($id)){	
+
+    $usuario = new UsuarioControl();
+    $usuario->delete($id);
+    header('Location:listar.php');
+
+    }
 }
 
 
