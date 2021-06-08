@@ -23,6 +23,11 @@ class UsuarioControl{
 		return $usuario->find($id);
 	}
 
+	function findByEmail($email){
+		$usuario = new Usuario();
+		return $usuario->findByEmail($email);
+	}
+
 	function findAll(){
 		$usuario = new Usuario();
 		return $usuario->findAll();
