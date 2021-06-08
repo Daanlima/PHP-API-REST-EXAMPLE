@@ -2,7 +2,7 @@
 include '../../conexao/Conexao.php';
 
 class Parceiro extends Conexao{
-	private $idarceiro;
+	private $idparceiro;
 	private $nome;
     private $cnpj;
     private $cep;

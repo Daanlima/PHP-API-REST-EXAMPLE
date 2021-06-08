@@ -90,6 +90,20 @@ class Usuario extends Conexao{
         return $arraylist;
 	}
 
+    public function findByEmail($email = null){
+        $arraylist = [];
+		$sql = "SELECT * FROM usuario WHERE email = :email";
+		$consulta = Conexao::prepare($sql);
+		$consulta->bindValue('email',$email);
+		$consulta->execute();
+		//return $consulta->fetchAll();
+
+        while ($record = $consulta->fetchAll()) {
+            array_push($arraylist, $record);
+        }
+        return $arraylist;
+	}
+
 	public function findAll(){
 
         $arraylist = [];
