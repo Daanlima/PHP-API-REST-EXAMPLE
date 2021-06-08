@@ -8,7 +8,7 @@ if(!empty($_REQUEST['email'])){
 
 	header('Content-Type: application/json');
 
-	if(!empty($findbyemail)){	
+	if(!empty($email)){	
 		$findbyemail = $usuario->find($email);
 		echo json_encode($findbyemail);
 	}
